@@ -27,17 +27,17 @@ Route::get('login', function () {
     return view('login');
 });
 
-
+// for registration Form
 Route::view('registration', 'registrationform');
 Route::post('registration-submit', [CandidateController::class, 'registrationform_submit']);
 
 // For Login functions
-Route::post('login-submit', [AdminController::class, 'login_submit']);
-Route::get('logout', [AdminController::class, 'logout_admin']);
+Route::post('login-submit', [AdminController::class, 'login']);
+Route::get('logout', [AdminController::class, 'logout']);
 
 // for list all the candidates and update
-Route::get('showjobrequests', [CandidateController::class, 'Display_Job_Candidate']);
-Route::get('delete{id}', [CandidateController::class, 'Delete_Candidate']);
-Route::get('view-candidate{id}', [CandidateController::class, 'show_Candidate']);
-Route::post('update{id}', [CandidateController::class, 'update_status']);
-Route::post('search-ticket', [CandidateController::class, 'search_by_Ticket']);
+Route::get('showjobrequests', [CandidateController::class, 'displayJobcandidate']);
+Route::get('delete{id}', [CandidateController::class, 'deleteCandidate']);
+Route::get('view-candidate{id}', [CandidateController::class, 'showCandidate']);
+Route::post('update{id}', [CandidateController::class, 'updateStatus']);
+Route::post('search-ticket', [CandidateController::class, 'searchByticket']);

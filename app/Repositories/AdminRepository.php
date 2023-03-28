@@ -9,15 +9,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class AdminRepository implements AdminInterface
 {
-    public function admin_Login($request)
+    public function login($request)
     {
-
         $username = $request->get('email');
         $password = $request->get('password');
-        if ($credentials = User::where('email', $username)
-            ->where('password', $password)
-            ->first()
-        ) {
+        $credentials = User::where('email', $username)->where('password', $password)->first();
+        if ($credentials) {
             Session()->put("user_session", $username);
         }
         return $credentials;

@@ -5,20 +5,20 @@ namespace App\Interfaces;
 interface CandidateInterface
 {
      //add candidate details into the table
-     public function submit_Candidate_details($request);
+     public function submitCandidatedetails($request);
      
      // list all candidates
-     public function Display_Job_Candidates();
+     public function displayJobcandidates();
 
      // delete candidate
-     public function Delete_Candidate($id);
+     public function deleteCandidate($id);
 
      // show all the details of perticular selected candidate
-     public function show_Candidate($id);
+     public function showCandidate($id);
     
      // update status selected or rejected
-     public function update_status($request, $id);
+     public function updateStatus($request, $id);
    
      // search by ticket number for getting the status of your job application
-     public function search_by_Ticket($request);
+     public function searchByticket($request);
 }

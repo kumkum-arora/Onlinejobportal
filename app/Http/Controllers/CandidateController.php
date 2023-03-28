@@ -18,39 +18,36 @@ class CandidateController extends Controller
 
     public function registrationform_submit(RegformRequest $request)
     {
-        $ticketid = $this->candidate->submit_Candidate_details($request);
-        //  dd($ticketid);
+        $ticketid = $this->candidate->submitCandidatedetails($request);
         return view('registrationform', compact('ticketid'));
     }
 
-    public function Display_Job_Candidate()
+    public function displayJobcandidate()
     {
-        $Candidates = $this->candidate->Display_Job_Candidates();
+        $Candidates = $this->candidate->displayJobcandidates();
         return view('jobrequests', compact('Candidates'));
     }
 
-    public function Delete_Candidate($id)
+    public function deleteCandidate($id)
     {
-        $this->candidate->Delete_Candidate($id);
-        return back();
+        $this->candidate->deleteCandidate($id);
+        return redirect('showjobrequests');
     }
 
-    public function show_Candidate($id)
+    public function showCandidate($id)
     {
-        $details = $this->candidate->show_Candidate($id);
+        $details = $this->candidate->showCandidate($id);
         return view('candidatedetails', compact('details'));
     }
 
-    public function update_status(Request $request, $id)
+    public function updateStatus(Request $request, $id)
     {
-        $this->candidate->update_status($request, $id);
-        $Candidates = $this->candidate->Display_Job_Candidates();
-        return view('jobrequests', compact('Candidates'));
+        $this->candidate->updateStatus($request, $id);
+        return redirect('showjobrequests');
     }
-    public function search_by_Ticket(Request $request)
+    public function searchByticket(Request $request)
     {
-        $getUserstatus = $this->candidate->search_by_Ticket($request);
-        // dd($GetUserstatus);
+        $getUserstatus = $this->candidate->searchByticket($request);
         return view('Searchticket', compact('getUserstatus'));
     }
 }

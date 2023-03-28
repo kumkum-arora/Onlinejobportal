@@ -15,18 +15,18 @@ class AdminController extends Controller
         $this->credentials = $credentials;
     }
 
-    public function login_submit(LoginRequest $request)
+    public function login(LoginRequest $request)
     {
-        $credentials = $this->credentials->admin_Login($request);
-        // return view('index');
+        $credentials = $this->credentials->login($request);
         if ($credentials) {
             return view('index');
         } else {
-            return Redirect()->back()->withErrors(['msg' => 'Please Enter Valid Details']);
+            $message = 'Please Enter Valid Details';
+            return Redirect()->back()->withErrors(['msg' => $message]);
         }
     }
 
-    public function logout_admin()
+    public function logout()
     {
         $this->credentials->logout();
         return redirect('index');
